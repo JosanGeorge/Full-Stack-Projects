@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracking App</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Habit Tracking App</h1>
+    <ul>
+        <% habits.forEach(habit => { %>
+            <li>
+                <%= habit.name %> - Progress: <%= habit.progress %> / <%= habit.goal %>
+                <form action="/update/<%= habit._id %>" method="post" style="display: inline;">
+                    <button type="submit">Update Progress</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+    <form action="/add" method="post">
+        <label for="name">Habit Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="goal">Goal:</label>
+        <input type="number" id="goal" name="goal" required>
+        <button type="submit">Add Habit</button>
+    </form>
+</body>
+</html>
