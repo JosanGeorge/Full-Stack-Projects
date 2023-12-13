@@ -1,0 +1,96 @@
+/* styles.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+label {
+    margin-top: 10px;
+    display: block;
+    font-size: 18px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#strength-meter {
+    height: 10px;
+    background-color: #ddd;
+    margin-top: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#strength-meter:before {
+    content: '';
+    display: block;
+    height: 100%;
+    width: 0;
+    background-color: #4CAF50;
+    border-radius: 5px;
+    transition: width 0.3s;
+}
+
+#feedback {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #777;
+}
+
+.strength-0:before {
+    width: 20%;
+    background-color: #FF0000;
+}
+
+.strength-1:before {
+    width: 40%;
+    background-color: #FF4500;
+}
+
+.strength-2:before {
+    width: 60%;
+    background-color: #FFD700;
+}
+
+.strength-3:before {
+    width: 80%;
+    background-color: #ADFF2F;
+}
+
+.strength-4:before {
+    width: 100%;
+    background-color: #4CAF50;
+}
+
+/* Responsive Styles */
+
+@media only screen and (max-width: 600px) {
+    .container {
+        width: 80%;
+    }
+}
