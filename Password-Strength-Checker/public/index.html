@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Checker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Password Strength Checker</h1>
+        <label for="password">Enter your password:</label>
+        <input type="password" id="password" name="password" oninput="checkPassword()">
+        <div id="strength-meter"></div>
+        <div id="feedback"></div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const passwordInput = document.getElementById('password');
+            const strengthMeter = document.getElementById('strength-meter');
+            const feedback = document.getElementById('feedback');
+
+            fetch('/check-password', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `password=${passwordInput.value}`,
+            })
+            .then(response => response.json())
+            .then(data => {
+                strengthMeter.style.width = `${(data.score + 1) * 20}%`;
+                strengthMeter.className = `strength-${data.score}`;
+                feedback.innerHTML = data.feedback.join('<br>');
+            })
+            .catch(error => console.error(error));
+        }
+    </script>
+</body>
+</html>
